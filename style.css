@@ -32,7 +32,7 @@ header {
             #ff8c42 35%,
             #ffd2b3 65%,
             #ffffff 100%);
-    display: flex;
+    display: auto;
     justify-content: center;
     align-items: center;
     text-align: center;
@@ -70,18 +70,19 @@ header {
     opacity: 0;
 }
 
-/* ================= NAV ================= */
+/* ================= NAV (ปรับสมดุล Responsive) ================= */
 nav {
     position: fixed;
     top: 0;
     width: 100%;
-    background: rgba(255, 255, 255, 0.85);
-    backdrop-filter: blur(12px);
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(14px);
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 28px;
-    padding: 14px 20px;
+    flex-wrap: wrap;                 /* สำคัญมาก */
+    gap: clamp(12px, 2vw, 28px);     /* ปรับระยะตามจอ */
+    padding: 14px 5%;
     z-index: 1000;
     transition: 0.4s ease;
 }
@@ -90,21 +91,27 @@ nav {
 nav a {
     text-decoration: none;
     font-weight: 600;
-    font-size: 1rem;
+    font-size: clamp(14px, 1.1vw, 18px);
     letter-spacing: 0.5px;
     color: var(--blue);
-    padding: 8px 16px;
-    border-radius: 8px;
-    transition: 0.3s ease;
+    
+    padding: 10px 22px;             /* ขนาดปุ่มคงที่ */
+    min-width: 120px;               /* ความกว้างเท่ากัน */
+    text-align: center;
+    border-radius: 12px;
+    white-space: nowrap;
+
+    transition: all 0.3s ease;
 }
 
-/* Hover ให้ไปทิศเดียวกัน */
+/* Hover ไปทิศเดียวกัน */
 nav a:hover {
     background: var(--orange);
     color: white;
+    transform: translateY(-2px);
 }
 
-/* Active state */
+/* Active */
 nav a.active {
     background: var(--orange);
     color: white;
@@ -113,18 +120,33 @@ nav a.active {
 /* ตอน scroll */
 nav.scrolled {
     background: var(--blue);
-    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.25);
 }
 
 nav.scrolled a {
     color: white;
 }
 
-/* Hover ตอน scroll */
 nav.scrolled a:hover {
     background: var(--orange);
     color: white;
 }
+
+/* ================= Mobile Layout ================= */
+@media (max-width: 768px) {
+    nav {
+        justify-content: center;
+        gap: 10px;
+        padding: 12px 3%;
+    }
+
+    nav a {
+        min-width: 100px;
+        padding: 8px 16px;
+        font-size: 14px;
+    }
+}
+
 
 /* ปุ่มระบบ (ให้เหมือนกัน ไม่แยกสไตล์) */
 .nav-btn {
