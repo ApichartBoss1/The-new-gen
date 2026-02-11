@@ -1,0 +1,386 @@
+:root {
+    --orange: #ff6a13;
+    --blue: #002b49;
+}
+
+/* ================= RESET ================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Chakra Petch', sans-serif;
+}
+
+body {
+    background: #ffffff;
+    color: #333;
+    scroll-behavior: smooth;
+    font-size: 17px;
+    /* เพิ่ม base font ให้สบายตา */
+    line-height: 1.75;
+    opacity: 0;
+    transition: opacity 0.8s ease;
+
+}
+
+/* ================= HERO (ไม่ปรับฟอนต์ตามที่ขอ) ================= */
+header {
+    min-height: 100vh;
+    position: relative;
+    background: linear-gradient(180deg,
+            #ff6a13 0%,
+            #ff8c42 35%,
+            #ffd2b3 65%,
+            #ffffff 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding-top: 100px;
+    overflow: hidden;
+}
+
+.hero img {
+    width: 170px;
+    margin-bottom: 24px;
+    filter: drop-shadow(0 15px 35px rgba(0,0,0,0.15));
+    animation: fadeZoom 1.4s ease-out forwards, pulse 3s infinite;
+    transform-origin: center;
+}
+
+.hero h1 {
+    font-size: 4.2rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #002b49;
+    text-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+    animation: slideUp 1.2s ease-out forwards;
+    animation-delay: 0.3s;
+    opacity: 0;
+}
+
+.hero p {
+    margin-top: 18px;
+    font-size: 1.4rem;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+    color: #002b49;
+    animation: slideUp 1.2s ease-out forwards;
+    animation-delay: 0.6s;
+    opacity: 0;
+}
+
+/* ================= NAV ================= */
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 28px;
+    padding: 14px 20px;
+    z-index: 1000;
+    transition: 0.4s ease;
+}
+
+/* ลิงก์ทั้งหมด */
+nav a {
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    letter-spacing: 0.5px;
+    color: var(--blue);
+    padding: 8px 16px;
+    border-radius: 8px;
+    transition: 0.3s ease;
+}
+
+/* Hover ให้ไปทิศเดียวกัน */
+nav a:hover {
+    background: var(--orange);
+    color: white;
+}
+
+/* Active state */
+nav a.active {
+    background: var(--orange);
+    color: white;
+}
+
+/* ตอน scroll */
+nav.scrolled {
+    background: var(--blue);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+nav.scrolled a {
+    color: white;
+}
+
+/* Hover ตอน scroll */
+nav.scrolled a:hover {
+    background: var(--orange);
+    color: white;
+}
+
+/* ปุ่มระบบ (ให้เหมือนกัน ไม่แยกสไตล์) */
+.nav-btn {
+    border: 2px solid var(--orange);
+}
+
+.nav-btn:hover {
+    background: var(--orange);
+    color: white;
+}
+
+/* ================= SECTION ================= */
+section {
+    max-width: 1200px;
+    margin: auto;
+    padding: 90px 24px;
+}
+
+section h2 {
+    font-size: 2.2rem;
+    color: var(--blue);
+    border-left: 6px solid var(--orange);
+    padding-left: 14px;
+    margin-bottom: 40px;
+    font-size: 2.1rem;
+}
+
+section p {
+    font-size: 1.1rem;
+    color: #444;
+}
+
+/* ================= POLICY ================= */
+.policy {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 25px;
+}
+
+.policy-card {
+   background: white;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    font-size: 1.05rem;
+    line-height: 1.7;
+    transition: 0.3s;
+}
+
+.policy-card h3 {
+    font-size: 1.4rem;
+    margin-bottom: 12px;
+}
+
+.policy-card p {
+    font-size: 1.05rem;
+}
+
+.policy-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(255,106,19,0.35);
+}
+
+/* ================= ORG ================= */
+.org {
+    text-align: center;
+}
+
+.org-level {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 25px;
+    margin-bottom: 40px;
+}
+
+.member {
+    background: white;
+    width: 200px;
+    padding: 20px;
+    border-radius: 16px;
+    box-shadow: 0 8px 18px rgba(0,0,0,0.12);
+    transition: 0.3s;
+}
+
+.member:hover {
+   transform: scale(1.05);
+   box-shadow: 0 15px 30px rgba(255,106,19,0.35);
+}
+
+.member img {
+    width: 120px;
+    height: 150px;
+    border-radius: 12px;
+    object-fit: cover;
+}
+
+.member h4 {
+    margin-top: 14px;
+    font-size: 1.15rem;
+    color: var(--blue);
+}
+
+.member p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #555;
+}
+
+.member .faculty {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #777;
+}
+
+/* ================= FOLLOW ================= */
+.follow {
+    padding: 70px 20px;
+    text-align: center;
+}
+
+.follow h2 {
+    font-size: 2rem;
+}
+
+.follow p {
+    font-size: 1.05rem;
+    color: #666;
+    margin-bottom: 30px;
+}
+
+.follow-links {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.follow-links a {
+    font-size: 1rem;
+    text-decoration: none;
+    padding: 12px 20px;
+    border-radius: 10px;
+    background: white;
+    color: var(--blue);
+    font-weight: bold;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+    transition: 0.3s;
+}
+
+.follow-links a:hover {
+    background: var(--orange);
+    color: white;
+    transform: translateY(-4px);
+}
+
+/* ================= FOOTER ================= */
+footer {
+    background: var(--blue);
+    color: white;
+    text-align: center;
+    padding: 30px;
+    font-size: 1rem;
+}
+
+/* ================= ANIMATION ================= */
+@keyframes fadeZoom {
+    from {
+        opacity: 0;
+        transform: scale(.85) translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+/* ================= RESPONSIVE ANIMATION ================= */
+
+/* Mobile */
+@media (max-width: 767px) {
+    .hero img {
+        width: 200px;
+        animation-duration: 1.8s;
+    }
+
+    .hero h1 {
+        font-size: 3rem;
+    }
+
+    .hero p {
+        font-size: 1.2rem;
+    }
+}
+
+/* iPad */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .hero img {
+        width: 240px;
+        animation-duration: 1.8s;
+    }
+
+    .hero h1 {
+        font-size: 4rem;
+    }
+
+    .hero p {
+        font-size: 1.4rem;
+    }
+}
+
+/* Notebook */
+@media (min-width: 1024px) and (max-width: 1439px) {
+    .hero img {
+        width: 280px;
+        animation-duration: 1.8s;
+    }
+
+    .hero h1 {
+        font-size: 4.5rem;
+    }
+}
+
+/* Desktop ใหญ่ */
+@media (min-width: 1440px) {
+    .hero img {
+        width: 320px;
+        animation-duration: 1.8s;
+    }
+
+    .hero h1 {
+        font-size: 4.8rem;
+    }
+}
